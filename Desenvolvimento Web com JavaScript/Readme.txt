@@ -51,6 +51,8 @@ criamos classes no css e estilizamos a lista de pokemon
 
 ADICIONANDO A IMAGEM DO POKÉMON
 
+https://pokeapi.co/docs/v2#pokemon
+
 
 
 
