@@ -53,6 +53,16 @@ ADICIONANDO A IMAGEM DO POKÉMON
 
 https://pokeapi.co/docs/v2#pokemon
 
+ADICIONANDO OS TIPOS DOS POKÉMON E FINALIZANDO O LAYOUT DA IMAGEM
+
+TORNANDO NOSSO LAYOUR RESPONSIVO
+
+Media Query CSS - Mediaquery é um conjunto de css que vai ser aplicado de acordo com a tela
+
+
+---------------------------------------------------------------------------------------
+          
+
 
 
 
