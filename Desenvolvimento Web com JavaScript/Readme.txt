@@ -282,6 +282,21 @@ ADICIONANDO OS TIPOS DE POKEMONS DINAMICAMENTE
 
     Inserimos as classes no CSS referente ao type e declaramos o type no JavaScript
 
+
+ADICIONANDO O BOTÃO DE PAGINAÇÃO
+
+    Adicionamos um botão para carregar a proxima página no html e estilizamos no css
+
+CRIANDO O MECANISMO DE PAGINAÇÃO
+
+    Criamos uma função javascript para o botão load page e encapsulamos algumas funções
+
+CRIANDO MECANISMO PARA LIMITAR NA PRIMEIRA GERAÇÃO DE POKEMONS
+
+
+
+
+
     
 
 
