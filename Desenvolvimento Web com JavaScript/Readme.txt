@@ -297,7 +297,8 @@ CRIANDO MECANISMO PARA LIMITAR NA PRIMEIRA GERAÇÃO DE POKEMONS
 
 --------------------------------------------------------------------------------------------------------------------------
  
-https://github.com/digitalinnovationone/js-developer-pokedex
+https://github.com/digitalinnovationone/js-developer-pokedex - selecione a Branch com o projeto básico 1 para dar
+continuidade
 
 ---------------------------------------------------------------------------------------------------------------------------
     
