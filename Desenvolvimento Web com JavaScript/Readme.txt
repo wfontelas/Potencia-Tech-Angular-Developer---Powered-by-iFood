@@ -280,6 +280,8 @@ CONVERTENDO O MODELO DO POKEAPI PARA NOSSO MODELO
 
 ADICIONANDO OS TIPOS DE POKEMONS DINAMICAMENTE
 
+    Inserimos as classes no CSS referente ao type e declaramos o type no JavaScript
+
     
 
 
