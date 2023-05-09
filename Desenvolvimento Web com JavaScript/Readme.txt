@@ -275,7 +275,8 @@ MANIPULANDO MÚLTIPLAS REQUISIÇÕES EM PARALELO
 
     CONVERTENDO O MODELO DO POKEAPI PARA NOSSO MODELO
 
-    
+    Convertemos o modelo da Api para o nosso modelo, com as caracteristicas que necessitamos
+    criamos uma classe Pokemon com os seus devidos atributos
 
 
 
