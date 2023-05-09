@@ -293,10 +293,13 @@ CRIANDO O MECANISMO DE PAGINAÇÃO
 
 CRIANDO MECANISMO PARA LIMITAR NA PRIMEIRA GERAÇÃO DE POKEMONS
 
+    Limitamos a exibição dos pokemosn da primeira geração , usando as condições if e else 
 
+--------------------------------------------------------------------------------------------------------------------------
+ 
+https://github.com/digitalinnovationone/js-developer-pokedex
 
-
-
+---------------------------------------------------------------------------------------------------------------------------
     
 
 
