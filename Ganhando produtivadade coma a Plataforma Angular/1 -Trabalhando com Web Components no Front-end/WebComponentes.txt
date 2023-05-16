@@ -75,7 +75,8 @@ Obs: Lembre-se de usar sempre o defer , qundo for fazer um component manualmente
 	
 -Setando Propriedades de classes
 
-		class CardNews extends HTMLElement {
+
+	class CardNews extends HTMLElement {
     constructor() {
         super();
 
@@ -109,6 +110,241 @@ Obs: Lembre-se de usar sempre o defer , qundo for fazer um component manualmente
 	
 	
 -Construindo o build do seu component	
+
+
+	   build() { 
+        const componentRoot = document.createElement("div");
+        componentRoot.setAttribute("class", "card");
+
+        const cardLeft = document.createElement("div");
+        cardLeft.setAttribute("class", "card_left");
+
+        const autor = document.createElement("span");    
+        const linkTitle = document.createElement("a");
+        const newsContent = document.createElement("p");
+
+        cardLeft.appendChild(autor);
+        cardLeft.appendChild(linkTitle);
+        cardLeft.appendChild(newsContent);
+
+        const cardRight = document.createElement("div");
+        cardRight.setAttribute("class", "card_right")
+        const newsImage = document.createElement("img");
+        cardRight.appendChild(newsImage);
+
+        componentRoot.appendChild(cardLeft);
+        componentRoot.appendChild(cardRight);
+
+        return componentRoot;
+
+    }
+
+-Construindo as props do cardNews
+	
+	<!--HTML-->	
+	 <card-news
+        autor="William Fontelas";
+        title="Darth Vader Contrata";
+        content="Darth Vader procura desenvolvedores que sabem trabalhar com components";
+    ></card-news>
+	
+	<!--Components-->
+	 build() { 
+        const componentRoot = document.createElement("div");
+        componentRoot.setAttribute("class", "card");
+
+        const cardLeft = document.createElement("div");
+        cardLeft.setAttribute("class", "card_left");
+
+        const autor = document.createElement("span");
+        autor.textContent = "By " + (this.getAttribute("autor") || "Anonymous");
+
+        const linkTitle = document.createElement("a");
+        linkTitle.textContent = this.getAttribute("title")
+
+        const newsContent = document.createElement("p");
+        newsContent.textContent = this.getAttribute("content")
+
+        cardLeft.appendChild(autor);
+        cardLeft.appendChild(linkTitle);
+        cardLeft.appendChild(newsContent);
+
+        const cardRight = document.createElement("div");
+        cardRight.setAttribute("class", "card_right")
+        const newsImage = document.createElement("img");
+        cardRight.appendChild(newsImage);
+
+        componentRoot.appendChild(cardLeft);
+        componentRoot.appendChild(cardRight);
+
+        return componentRoot;
+
+    }
+	
+	
+-Pegando as props dos sub elementos do component
+
+	<!--HTML-->
+	
+	 <card-news
+        autor="William Fontelas";
+        title="Darth Vader Contrata";
+        link-url="www.google.com";
+        photo = "assets/img/images.jpg";
+        content="Darth Vader procura desenvolvedores que sabem trabalhar com components";
+    ></card-news>
+	
+	<!--Components-->
+	
+		build() { 
+			const componentRoot = document.createElement("div");
+			componentRoot.setAttribute("class", "card");
+
+			const cardLeft = document.createElement("div");
+			cardLeft.setAttribute("class", "card_left");
+
+			const autor = document.createElement("span");
+			autor.textContent = "By " + (this.getAttribute("autor") || "Anonymous");
+
+			const linkTitle = document.createElement("a");
+			linkTitle.textContent = this.getAttribute("title");
+			linkTitle.href = this.getAttribute("link-url");
+
+			const newsContent = document.createElement("p");
+			newsContent.textContent = this.getAttribute("content")
+
+			cardLeft.appendChild(autor);
+			cardLeft.appendChild(linkTitle);
+			cardLeft.appendChild(newsContent);
+
+			const cardRight = document.createElement("div");
+			cardRight.setAttribute("class", "card_right")
+
+			const newsImage = document.createElement("img");
+			newsImage.src = this.getAttribute("photo") || "assets/img/foto-default.png"
+			newsImage.alt = "Foto da Noticia";
+			cardRight.appendChild(newsImage);
+
+			componentRoot.appendChild(cardLeft);
+			componentRoot.appendChild(cardRight);
+
+        return componentRoot;
+
+    }
+	
+	
+-Criando o Style do seu component
+
+	class CardNews extends HTMLElement {
+    constructor() {
+        super();
+
+        const shadow = this.attachShadow({ mode: "open" });
+        shadow.appendChild(this.build());
+        shadow.appendChild(this.styles());
+    }
+
+    build() { 
+        const componentRoot = document.createElement("div");
+        componentRoot.setAttribute("class", "card");
+
+        const cardLeft = document.createElement("div");
+        cardLeft.setAttribute("class", "card_left");
+
+        const autor = document.createElement("span");
+        autor.textContent = "By " + (this.getAttribute("autor") || "Anonymous");
+
+        const linkTitle = document.createElement("a");
+        linkTitle.textContent = this.getAttribute("title");
+        linkTitle.href = this.getAttribute("link-url");
+
+        const newsContent = document.createElement("p");
+        newsContent.textContent = this.getAttribute("content")
+
+        cardLeft.appendChild(autor);
+        cardLeft.appendChild(linkTitle);
+        cardLeft.appendChild(newsContent);
+
+        const cardRight = document.createElement("div");
+        cardRight.setAttribute("class", "card_right")
+
+        const newsImage = document.createElement("img");
+        newsImage.src = this.getAttribute("photo") || "assets/img/foto-default.png"
+        newsImage.alt = "Foto da Noticia";
+        cardRight.appendChild(newsImage);
+
+        componentRoot.appendChild(cardLeft);
+        componentRoot.appendChild(cardRight);
+
+        return componentRoot;
+
+    }
+    
+		styles() {
+			const style = document.createElement("style");
+			style.textContent = `
+				.card{
+					width:80%;                
+					-webkit-box-shadow: 9px 9px 18px -8px rgba(0,0,0,0.75); /*Border-shadow css generator*/
+					-moz-box-shadow: 9px 9px 18px -8px rgba(0,0,0,0.75);
+					box-shadow: 9px 9px 18px -8px rgba(0,0,0,0.75); 
+					display:flex;
+					flex-direction: row;
+					justify-content: space-between ;
+				}   
+						  
+				.card_left{
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					padding-left: 10px;
+				}
+				
+				.card_left > span {
+					font-weight:400;
+				}
+				
+				.card_left > a {
+					margin-top: 15px;
+					font-size: 25px;
+					color:black;
+					text-decoration: none;
+					font-weight: bold;
+				}
+				
+				.card_left > p  {
+					color:rgb(70, 70, 70);
+				}   
+			`;
+			 return style;   
+		}
+		
+	}
+
+	customElements.define("card-news", CardNews);
+
+
+-Bora componetizar o mundo 
+
+Componetizar varias partes do site Jovem Nerd
+
+DOM
+Shadow DOM
+
+Virtual DOM - uma técnica diferente de manipular a  DOM ,Muito utilizada por traz dos panos do React
+
+
+
+	
+		
+	
+
+
+
+
+
+
+https://www.dio.me/articles/conceitos-de-web-componentes-no-frontend --Link resumindo o curso
 		
 		
  

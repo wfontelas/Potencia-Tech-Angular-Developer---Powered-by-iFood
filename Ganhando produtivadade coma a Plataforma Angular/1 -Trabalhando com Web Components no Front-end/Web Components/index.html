@@ -10,20 +10,21 @@
     <script src="src/Components/TituloDinamico.js" defer></script>
 </head>
 <body>
-    <div class="container">
-        <div class="card">
-            <div class="card_left">
-                <span> by William Fontelas</span>
-                <a href="#">Darth Vader Contrata Devs</a>
-                <p>Darth Vader procura desenvolvedores que sabem trabalhar com web components</p>
-            </div>
-            <div class="card_right">
-                <img src="assets/img/images.jpg" alt="Darth Vader">                
-            </div>
-        </div>
-    </div>
-    <card-news></card-news>
-    <titulo-dinamico titulo="Noticia urgente !!"></titulo-dinamico>
-    <titulo-dinamico titulo="Novo titulo "></titulo-dinamico>
+    <div class="app-root"> <!--app-root , nome do container quando utilizamos-->
+        <card-news
+            autor="William Fontelas";
+            title="Darth Vader Contrata";
+            link-url="www.google.com";
+            photo = "assets/img/images.jpg";
+            content="Darth Vader procura desenvolvedores que sabem trabalhar com components";
+        ></card-news> 
+
+        <card-news           
+            title="yoda convence republica a utlizar components";
+            link-url="www.google.com/yoda";
+            photo = "assets/img/images.jpg";            
+            content="Yoda se pronuncia e choca a republica";
+        ></card-news>        
+    </div> 
 </body>
 </html>
