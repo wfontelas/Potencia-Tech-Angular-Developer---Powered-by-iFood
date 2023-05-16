@@ -1,0 +1,126 @@
+ ----------------------------------------------------------------------------------------------------------------
+ ****************************** TRABALHANDO COM WEB COMPONENTS NO FRONT-END *************************************
+ ----------------------------------------------------------------------------------------------------------------
+ 
+ D.O.M -Document Object Model
+ 
+ 
+ Shadow DOM - Criar uma outra estrutura de DOM dentro de uma DOM , encapsulando a arvore dentro de um elemento,
+ a criação vem através de um custom element (elemento customizada)
+ 
+ ***Consultando o CAN I USE****
+ 
+ Verifica se vc pode usar Shadow Dom nos Navegadores
+ 
+ https://caniuse.com
+ 
+ 
+ CRIANDO COMPONENTS
+ 
+ -Definindo um Component
+ 
+ Todo componente é um a função JavaScript , que vai retornar mais JavaScript, HTML e CSS
+ 
+ -Anatomia e vantagens de Components
+ 
+ Components é um conjunto de elements + styles + prop 
+ 
+ //extends = no caso abaixo a classe vai se portar como elemento HTML
+/*constructor é o o construtor da nossa classe e o super é uma chamada do construtor
+ em que ele esta herdando*/
+    
+class CardNews extends HTMLElement { 
+    constructor() {
+        super();
+
+        const shadow = this.attachShadow({ mode: "open" }) //cria uma sombra
+        shadow.innerHTML = "<h1>Hello World</h1>";
+    }
+}
+customElements.define('card-news', CardNews)
+ 
+ -Estilizando um Component
+ 
+ Criamos um component de style css linkado junto com component craido acima
+ 
+ -Criando PROP
+ 
+ configuramos a prop com o nome de titulo componentRoot.textContent = this.getAttribute("titulo"); e colocamos no componente criado desta forma:
+ 
+ <titulo-dinamico titulo="Noticia urgente !!"></titulo-dinamico>
+    <titulo-dinamico titulo="Novo titulo "></titulo-dinamico>
+	
+Obs: Lembre-se de usar sempre o defer , qundo for fazer um component manualmente no link que colocamos no headers	
+	
+	
+ -Construindo um componente de maneira profissional
+ 
+ Base do component :
+ 
+ 
+		class CardNews extends HTMLElement {
+    constructor() {
+        super();
+
+        const shadow = this.attachShadow({ mode: "open" });        
+    }
+
+    build() { }
+    
+    styles() {}
+    
+	}
+
+	customElements.define("card-news", CardNews);
+	
+-Setando Propriedades de classes
+
+		class CardNews extends HTMLElement {
+    constructor() {
+        super();
+
+        const shadow = this.attachShadow({ mode: "open" });
+        shadow.appendChild(this.build());
+        shadow.appendChild(this.styles());
+    }
+
+    build() { 
+        const componentRoot = document.createElement("div");
+        componentRoot.setAttribute("class", "card");
+
+        const cardLeft = document.createElement("div");
+        cardLeft.setAttribute("class", "card_left");
+
+        const cardRight = document.createElement("div");
+        cardRight.setAttribute("class", "card_right")
+
+        componentRoot.appendChild(cardLeft);
+        componentRoot.appendChild(cardRight);
+
+        return componentRoot;
+
+    }
+    
+    styles() {}
+    
+	
+
+	customElements.define("card-news", CardNews);
+	
+	
+-Construindo o build do seu component	
+		
+		
+ 
+ 
+ 
+
+
+ 
+	
+ 
+ 
+ 
+ 
+ 
+ 
