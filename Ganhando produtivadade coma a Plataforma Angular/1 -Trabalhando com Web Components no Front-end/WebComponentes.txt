@@ -339,7 +339,7 @@ Virtual DOM - uma técnica diferente de manipular a  DOM ,Muito utilizada por tr
 		
 	
 
-
+https://github.com/felipeAguiarCode/angular-playground/tree/main/C1%20-%20Web%20Components
 
 
 
