@@ -1,0 +1,67 @@
+********************************************************************************************************************
+ ************************************* TYPESCRIPT PARA ANGULAR **************************************************
+********************************************************************************************************************
+
+	**iNTRODUÇÃO**
+
+		-O QUE VEM POR AI
+
+			TypeScript - Tipar o JavaScript
+	 
+			Todas as versões atulizadas do angular utilizam o TypeScript
+	 
+		-O QUE É E POR QUE VOCÊ DEVERIA UTILIZAR TYPESCRIPT
+		
+			Tony Stark - JS
+			
+			Homem de Ferro - TS
+			
+			Caracteristicas 
+			
+				-Tipar - Declarar quais tipos as variveis deve aceitar
+			
+				-Class - cria classes
+			 
+				-Interfaces - Contrato
+
+				-Enum - Enumerador
+
+				-Consegue ver os seus erros em tempo de desenvolvimento
+			
+				-Todo lugar onde vc utilizar JavaScript , aceita o TypeScript
+				
+			O TypeScript transpila para o JavaScript através do Node
+			
+		-VENDO NA PRÁTICA A MAIOR VANTAGEM DO TypeScript
+
+	**INSTALANDO TYPESCRIPT**
+	
+		npm init -y
+		npm install typescript -D  ---Dependencia de dev
+		
+		new file com extensão.ts
+		
+	**COMO RODAR O CÓDIGO TYPESCRIPT**
+	
+		console.log("ola mundo");
+		
+		node src/index.ts  - por que o console.log  é um comando do JavaScript,agora se usarmos um código
+		tipicio do TypeScript e usar o node dará erro:
+		
+		type heroi = {
+			name: string;
+			vulgo: string;
+			};
+			
+		console.log("ola mundo);
+
+		Para rodar o código acima temos que converter o o codigo em JavaScript	com o comando:
+		
+		npx tsc src/index.ts
+		
+		
+			
+	
+
+		
+		
