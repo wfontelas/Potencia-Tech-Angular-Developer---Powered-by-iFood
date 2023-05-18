@@ -184,7 +184,239 @@
 
 		-FUNÇÕES
 		
+			//funções
+			function addNumber(x : number, y: number ): number {
+				return x + y;
+			}
+
+			let soma: number = addNumber(4, 7);
+
+			console.log(soma);
+
+			function addToHello(name: string) {
+				return `Hello ${name}`;
+			}
+			console.log(addToHello("Willam"));
+
+			//Funçoes Multi Tipos
+			function CallToPhone(phone:number | string) : number | string {
+				return phone;
+			}
+
+			console.log(CallToPhone(16999885925));
+
+			//Funçoes Async
+			async function getDatabase(id: number): Promise<number | string> {
+				return "William";
+			}
+	**CLASSES**
+	
+		-TRABALHANDO COM CLASSES
 		
+		//Classes
+
+		class Character {
+			protected name?: string;
+			 readonly strenght: number;
+			 skill: number;
+
+			constructor( name: string,strenght: number, skill: number) {
+				this.name = name;
+				this.strenght = strenght;
+				this.skill = skill
+			}
+
+			 public attack(): void {
+				console.log(`Attack with ${this.strenght} points`)
+			}
+		}
+		
+		- DATA MODIFIERS
+		
+		 //Data Modifiers -Modificadores de acesso
+
+		 /*
+			public - acessa dentro e fora da classe, por default é publico
+			private - é acessada somente na classe e tem que passar oa 
+			propriedade pelo metodo construtor para
+			protected - Só pode ser acessado dentro da classe e de sub classes 
+			que herdam essa classe
+			readonly -somente leitura, nã consegue setar do lado de fora da 
+			classe
+
+			Os datas modifiers acima , também são aplicados em metodos também
+		*/ 
+
+		/*o que influência nas classes  - o status da classe, se é privada , publica 
+		protegida , somente leitura */
+		
+		-SUBCLASS
+		
+		//Subclasses
+
+		//Character: superclass - classe pai
+		//Magician: subclass -classe filha
+		//super() é para invocar o construtor da classe pai (Character)
+
+		class Magician extends Character{
+			magicPoints: number;
+			constructor(name: string,strenght: number, skill: number, magicPoints: number){
+				super(name, strenght, skill);
+				this.magicPoints = magicPoints;        
+			}   
+		}
+
+		const p1 = new Character("William",10, 98);
+		const p2 = new Magician("Mago", 09, 30, 100);
+		p1.skill = 12;
+		
+	**GENERICS**
+	
+		-O PROBLEMA QUE O GENERIC RESOLVE
+
+		//Generics
+
+		function concatArray(...items: any[]):any[] {
+			return new Array().concat(...items);
+		}
+
+		const numArray = concatArray([1, 5], [4]);
+		const stgArray = concatArray(["william", "Ryu"], ["Ken"]);
+		console.log(numArray);
+		console.log(stgArray);
+
+		numArray.push("Chung lee"); /*com o tipo any vc pode 
+		acrescentar qualquer tipo de varivel  */
+
+		console.log(numArray);//[ 1, 5, 4, 'Chung lee' ]
+		
+
+		-UTLIZANDO GENERIC NA PRATICA
+		
+		//Utilizando Generics na prática
+
+		function concatArray1<T>(...items: T[]):T[] {
+			return new Array().concat(...items);
+		}
+
+		const numArray1 = concatArray1<number[]>([1, 5], [4]);
+		const stgArray1 = concatArray1<string[]>(["william", "Ryu"], ["Ken"]);
+		console.log(numArray1);
+		console.log(stgArray1);
+
+		numArray1.push("Chung lee"); /*Agora verificamos que acrescentar uma varivel do
+		tipo string na const NumArray ele não vai aceitar, pois tipamos na hora
+		de passar a varivel */
+
+		console.log(numArray);
+
+	**TS NODE DEV**
+	
+		-TRABALHANDO COM TS NODE DEV
+		
+		Temos uma maneira de executar os TS sem gerar build toda hora
+		
+		vamos instalar um servidor :
+		
+		npm install ts-node-dev -D  ---um servidor local que entende TypeScript
+		
+		no package.json:
+		
+		acrescente no scripts :
+		"start-dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+		
+		pra rodar no console:
+		
+		npm run start:dev
+		
+		ele não criará o build e restartará automaticamente em qualquer mudança
+		
+	**DECORATORS**
+
+		-O PRINCIPIO DO DECORATORS**
+		
+		Decora uma função e passa para a classe desejada
+		
+		
+		
+		Para habilitar a opção experimentalDecorators acesse o tsconfig.json e decomente a linha
+		
+		function ExibirNome( target: any){
+			console.log(target);
+		}
+
+		@ExibirNome
+		class Funcionario {}
+
+		@ExibirNome
+		class Quincas{}
+		
+		-CLASS DECORATORS
+		 Quando roda o comando npm run start:dev ele injeta dinamicamente na classe o decorators
+		 
+		 function apiVersion(version: string) {
+			return (target: any) => {
+				Object.assign(target.prototype, { __version: version, __name: "William"});
+			};
+		}
+
+		@apiVersion("1.10")
+		class Api{}
+
+		const api = new Api();
+		console.log(api.__version);
+		console.log(api.__name);
+		
+		-ATRIBUTTE DECORATORS
+		
+		function minLenght(lenght: number) {
+			return (target: any, key: string) => {
+			   let _value = target[key];
+
+			   const getter = () => _value;
+			   const setter = (value: string) => {
+				if (value.length < lenght) {
+					throw new Error(`Tamanho menor do que ${lenght}`);
+				}
+				else{
+					_value = value;
+				}
+			   }
+
+			   Object.defineProperty(target, key, {
+				get: getter,
+				set: setter,
+			   });
+			};
+		}
+
+
+
+		class Api1 {
+			@minLenght(10)
+			name: string;
+
+			constructor(name: string){
+				this.name = name;
+			}
+		}
+
+		const api1 = new Api1("Produto Fontelas");
+		console.log(api1.name);
+		
+		-CONCLUSÃO
+		
+		https://github.com/felipeAguiarCode/angular-playground/tree/main/C2%20-%20Typescript%20para%20Angular
+
+
+		 
+		 
+		
+		
+		
+		
+
+
 			
 			
 			

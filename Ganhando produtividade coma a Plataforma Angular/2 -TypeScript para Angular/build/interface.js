@@ -27,3 +27,5 @@ class Pessoa {
 }
 const p = new Pessoa(1, "gutsman");
 console.log(p.sayHello());
+//Como o Js lida com interfaces ou types
+/* No Typescript tem a interface e types e no JavaScript não é sintatico*/
