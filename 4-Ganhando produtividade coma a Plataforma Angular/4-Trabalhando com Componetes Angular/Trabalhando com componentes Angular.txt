@@ -1,0 +1,198 @@
+	---------------------------------------------------------------------------------------------------------
+	***************************** TRABLHANDO COM COMPONENTES ANGULAR ****************************************
+	----------------------------------------------------------------------------------------------------------
+	
+	
+	ENTENDENDO A COMPOSIÇÃO DE COMPONENTES
+	
+		O que são Componentes 
+		
+			Um elemento que seja visual, customizavel e replicavel
+			
+			É o átomo da sua aplicação
+			
+			Gerealmente é uma função JS/TS que retorna HTML, CSS  e carrega eventos Javascript
+			
+		Como minha aplicação é montada ?
+
+			-A composição dos componentes através de Injeção dependencias
+			-Injeção de dependencia é um padrão de desenvolvimento utilizada em diversos cenários diferentes, é uma estratégia de desenvolvimento muito utilizada
+			-Uma injeção é feita quando algo depende de outra coisa para o seu funcionamento, mas ele não produz diretamente esse conteúdo, tendo a dependência de algum agente externo.
+			
+						Fluxo de como a sua aplicação é montada
+				
+			Banner Component 
+			Card Component  ---------------------> APP-ROOT ---------->HTML(index.html)
+			Video Component	
+	
+		
+		USANDO O STACKBLITZ.COM
+		
+			angular.io
+			
+			Projetos online stackblitz.com ---> ANGULAR front-end
+		
+		ARQUIVO SRC OUT (FORA DA PASTA SRC)
+		
+			src - tudo que vc vai codar
+			 
+			fora, arquivos de configuração:
+			 
+				-tsconfig.json - configuração para o TypeScript 
+				-package.jason - arquivo coração do Node , trazedno as infos dos projetos  o node que processa 
+				-angular.json - config do angular
+			
+			src - main.ts - arquivo principal
+			
+			
+		ARQUIVO SRC IN (DENTRO DA PASTA SRC)	
+			
+			src 
+			  index.html 
+			  main.ts - arquivo principal
+			  polifills.ts - config para  compatibilidade com navegadores antigos	
+			  styles.css - 	estilo global
+			
+			  app
+				app.components.css 
+				app.components.html
+				app.components.ts
+				app.module.ts
+				hello.components.ts
+				
+		COMPARANDO COM ESTRUTURA DE ARQUIVOS REACT E VUE
+
+			O conceito é o mesmo para React e Vue
+			
+		----------------------------------------------------------------------------------------------
+	
+	CRIANDO COMPONENTES NA PRÁTICA
+
+		ENTENDENDO O SCOPED
+		
+			O css de um componente ele é a nivel de scoped, ele vai afetar somente o elemento do proprio 
+			componente.
+			
+		CONTRATOS PARA SE CRIAR UM COMPONENTE
+			
+			Interface(contrato):
+			
+			import { Component, VERSION } from '@angular/core'; 
+			
+			Decorator:
+			
+			@component({
+				selector: 'hello',
+				template: `<h1> Hello {{name}}!</h1>`, ---podemos passar o arquivo como inline ou em URL 
+				styles: [`h1 { font-family: Lato; } ´] ---podemos passar o arquivo como inline ou em URL 
+			})
+			
+			export:
+			
+			export class AppComponent {
+			  name = 'Angular ' + VERSION.major;
+			}
+			
+		CRIANDO REGISTRANDO UM COMPONENTE ANGULAR SIMPLES
+
+			
+			Crie uma pasta dentro de app chamada components , e dentro da pasta Components, e crie um componente novo menu.component.ts
+			
+			Vamos importar do Angular o contrato:
+			
+			import { Component } from '@angular/core';
+			
+			Temos que colocar o decorator e o export da classe:
+			
+			@Componente({
+			
+			})
+			
+			export class MenuComponent {
+			
+			}
+			
+			depois vamos criar o selector, template e styles dentro do componente
+			
+			@Componente({
+				selector: 'menu-component',
+				template: '<h2>William</h2>,
+				styles: ['h2{ color: blue'],
+				
+			})
+			
+			export class MenuComponent {
+			
+			}
+			
+			Vamos declarar o arquivo dentro do arquivo de modulo o app.module.ts e declarar lá:
+			
+			import {MenuComponent} from './components/menu-component';
+			
+			ainda dentro do modulo declarar o novo componente dentro do @NgModule em declaration, detro do [MenuComponent]
+			
+			Após isso injetar no arquvio html 
+			
+	
+	CRIANDO COMPONENTES REUTILIZÁVEIS
+
+		CRIANDO A ESTRUTURA DE UM COMPONENTE
+		
+			Dentro da pasta components , vamos criar outro componente button.component.ts
+			
+			dentro vamos criar o button html e css:
+			
+			button.component.html e o button.component.css
+			
+			Dentro do button.component.ts:
+			
+			import { Component } from '@angular/core';
+			
+			@Component({
+				selector: 'my-button',
+				templateUrl: './button.component.html',
+				styleUrls: ['./button.component.css'],
+			})
+			
+			export class Button {}
+			
+			Dentro do arquivo button.component.html, vamos colocar:
+			
+			<div>
+				<button>click aqui</button>
+			</div>
+			
+			Após isso vamos registrar no module app.module:
+			
+			import { Button } from './components/button.component'; e no declarations colocar o Button
+			
+			Dentro do app.component.ts vamos colocar o button:
+			
+			<my-button></my-button>
+			
+		
+		INTERPOLAÇÃO DE DADOS	
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+			  
+					
+		 
+		 
+		 
+		
+		
+		
+		
+		

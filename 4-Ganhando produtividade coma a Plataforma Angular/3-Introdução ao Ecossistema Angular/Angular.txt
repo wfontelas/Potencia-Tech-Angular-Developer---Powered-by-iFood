@@ -1,0 +1,232 @@
+	**************************************************************************************************
+	---------------------------------------- ANGULAR--------------------------------------------------
+	**************************************************************************************************
+	
+	-INTRODUÇÃO AO ECOSSITEMA ANGULAR
+	
+		FRAMEWORK - Baseado em JavaScript (Principal FRAMEWORK do Google)
+		TypeScript - como liunguagem principal
+		SPAs(Single Page Application) - são seu foco
+		Componentes - são a base da arquitetura
+		Estrutura organizada e bem definida
+		Sistema de Tooling - muito rico: CLI, HTTP, Router..
+		
+		SPA - Single Page Application - Estratégia de como ele renderiza na tela
+		
+		Sistemas em crescimento ou Sistemas robustos
+
+	-PRÉ-REQUISITOS ANGULAR(bom conhecimento nos itens abaixo)
+	
+		HTML & CSS
+		NODE & NPM
+		JavaScript & TypeScript
+		
+	--------------------------------------------------------------------------------------
+
+	-DEFINIÇÕES DO ANGULAR
+
+		-ANGULARJS E ANGULAR -são totalmente diferentes
+		
+			AngularJS = Google e escrito em JavaScript(2010) 
+			
+			Angular = Google e escrito em TypeScript(2016)
+			
+		-ANGULAR NO MERCADO DE FRAMEWORKS
+
+			Angular, React, Aurelia, Vue = criar SPA , aplicação baseada em componentes, todos eles resolvem os mesmos problemas porém com estratégia diferentes
+			
+		-MORTAL KOMBAT CAPITULO FINAL ANGULAR VS REACT EDITION
+		
+		
+			Curva de aprendizagem é bem mais curta no REACT
+			
+			Mercado em deficit - ANGULAR
+			
+			Ambos tem MERCADO
+			
+			Vão resolver os mesmos problemas
+			
+			React - Biblioteca - não vai impor como vc vai programar seu projeto - menos setup
+			Angular - Framework - Estrutura bem definida , ele traz a desvatagens de muito setup, muito arquivo
+			
+			Ferramentas:
+			React - Bibliotecas de terceiros 
+			Angular - praticamente tem tudo dentro dele - Trabalhar com o Typescript
+			
+			Material:
+			React - tem muito mais que o Angular
+			Angular - tem menos e em menos frequencia
+			
+			Mobile:
+			React - React Native
+			Angular - esta encaminhando ainda
+			
+		-AS ESTRATÉGIAS ANGULAR COMPARADA A OUTRAS FERRAMENTAS
+		
+			-vide imagem salva na pasta
+			
+	-------------------------------------------------------------------------------------
+	-CAMADAS DA RESPONSABILIDADE UMA WEB APP
+	
+			- AS 4 CAMADAS DE UMA WEB APP
+		
+			-Componentes
+			-Gerenciamento de Estado
+			-Roteamento
+			-Renderização
+			
+		-CAMADA 1 - Componentes
+
+			Componentes ou Components 
+			
+			Componente é um elemento visual, customizável e reutilizavel 
+			Exemplo: um card na tela , botão
+			
+		-CAMADA 2 - GERENCIAMENTO DE ESTADO 
+		
+			STATES 	
+
+			Responsável por garantir que as informações dos componentes não estão dessincronizadas	
+			 e facilitar a comunicação de um componente com outro 
+			 
+			 Exemplo: Atualizar o carrinho de compras ao clicar no botãode comprar de um produto
+			 
+			No lugar de fazer vários IF's para gerenciar os estado , temos a biblioteca Gerenciador de Estados
+			
+			Exemplo: Flux, Redux (React) , Recoil, NGRX, NGXS(Angular)			
+		
+		
+		-CAMADA 3 - ROTEAMENTO 
+		
+				Responsável pela forma de navegar fazendo a troca de URL sem recarregar a página, mudando somente os componentes que são mostrados
+				
+				meuapp/login
+				
+				meuapp/home
+				
+				Ex de bibliotecas
+				History API - navegador
+				React-Router
+				Vue-Router
+				Angular RoutingModule
+				
+		-CAMADA 4 -	RENDERIZAÇÃO 
+		
+			Renderização ou Render
+			
+			Responsável por decidir a melhor maneira de acessar e entregar para o browser o componente pronto para que ele seja desenhado na janela sem complicações 
+			
+			o Render processa aas outras três camadas e entrega para o navegador
+			
+			Render, 3 tipos de estratégias:
+			
+			100% Server - O servidor entrega exetamente o que vc precisa
+			
+			Parte server e parte client 
+			
+			100% client
+			
+		-ENTEDIMENTO GERAL DAS CAMADAS
+
+			Vc consegue fazer isso tudo na unha , porém vc vai ter muito mais trabalho sem uma biblioteca ou framework para WebApp
+			
+	---------------------------------------------------------------------------------------------------------
+
+	-PRAZER EU SOU O ANGULAR		
+			
+		-CONHECENDO O ANGULAR IO
+
+			angular.io e não o angularjs(que foi encerrado o suporte)
+			
+		-CONHECENDO A DOCUMENTAÇÃO DO ANGULAR
+
+			StackBlitz - Carrega as aplicações mais atuais online para vc testar
+		
+		-ENTENDENDO O CÓDIGO ANGULAR
+		
+			SRC - source - parte codavél
+			
+				app - components:
+					app.component.css
+					app.component.html
+					app.component.ts
+					
+					app.module.ts - agrupador , onde importa os componentes 
+					
+					hello.component.ts				
+				
+				.index.html - tudo que for redenrizado
+				.main.ts - arquivos referentes a inicialização
+				.polyfills.ts - documentação quando vc precisa utilizar funções antigas que não existe nas versões mais 	 novas do typescript e javascript , vc encontra o que pode ser substituido.
+				.styles.css - estilo global			
+			
+			
+			fora do SRC - arquivos de configuração:
+			
+				tsconfig.json - config do typescript
+				package.json - config do node 
+				angular.json - config do angular
+				
+	---------------------------------------------------------------------------------------------------------------
+	
+	
+		
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+			
+				
+				
+		
+		
+
+		
+			
+			
+			
+			
+			
+
+			
+	
+	
+		
+			
+
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+		
+			
+			
+			
+			
+		
+		
+		
+		
+
+		
+	
+	
+	
+	
+	
+	
