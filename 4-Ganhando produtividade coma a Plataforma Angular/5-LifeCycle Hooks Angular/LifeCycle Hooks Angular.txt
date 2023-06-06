@@ -1,0 +1,126 @@
+	--------------------------------------------------------------------------------------------------------------
+	********************************** LifeCycle Hooks Angular ***************************************************
+	--------------------------------------------------------------------------------------------------------------
+	
+	1-PREPARANDO O SEU AMBIENTE LOCAL
+	
+		VAMOS CRIAR COMPONENTES DE MANEIRA LOCAL
+		
+			#REQUISITOS
+			
+				-Node & NPM (nodejs.org)
+				
+				- Visual Studio code (www.code.visualstudio.com/)
+					- Angular Language Service
+					- Auto Close Tag
+					- Auto Rename Tag
+					- Tema (*opcional)
+					- Icones (*opcional)
+					- editorConfig, Prettier, eslint
+					
+				- Angular
+					-npm install -g @angular/cli@14.1.2
+			
+			Obs: O navegador entende html, css e Javascript , o Node á para processsar essas informaçãoes para trabalhar de modo componentizada.
+		
+		DICAS OPCIONAL PARA CONFIGURAR ÍCONES MAIS VISUAIS
+		
+			https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme
+		
+	2-ANGULAR IO	
+		
+		COMO INSTALAR O ANGULAR CLI
+		
+			angular.io
+			
+			npm install -g @angular/cli@14.1.2
+			
+		
+		E SE JÁ TIVER VERSÕES MAIS ATUAIS DO ANGULAR
+
+			Twitter
+
+		
+		ERRO DO NSG PS1 PARA LIBERAR EXECUÇÃO DE SCRIPTS	
+		
+			Executador de script do angular
+			
+			ng help --rodar
+			
+				Em caso de erro igual abaixo:
+			
+				ng : O arquivo C:\Users\William\AppData\Roaming\npm\ng.ps1 não pode ser carregado. O arquivo 
+				C:\Users\William\AppData\Roaming\npm\ng.ps1 não está assinado digitalmente. Não é possível      
+				executar este script no sistema atual. Para obter mais informações sobre como executar scripts  
+				e definir a política de execução, consulte about_Execution_Policies at 
+				https://go.microsoft.com/fwlink/?LinkID=135170.
+				No linha:1 caractere:1
+				+ ng help
+				+ ~~
+					+ CategoryInfo          : ErrodeSegurança: (:) [], PSSecurityException
+					+ FullyQualifiedErrorId : UnauthorizedAccess
+					
+			Abrir o Powershell no modo administrador execute o comando abaixo:
+			
+				Get-ExecutionPolicy -List
+				
+				vamos desintalar o pacote do angular
+
+					npm uninstall -g @angular/cli
+					
+				após isso , vamos limpar o cache:
+
+					npm cache clean --force
+					
+				  e npm cache verify	
+				  
+				agora vamos mudar o CurrentUser no powershell
+				
+					Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+					
+				agora vamos rodar o pacote do angular novamente:
+				
+					npm install -g @angular/cli@14.1.2
+					
+				agora rodando o ng help, vamos ver todos os comandos
+
+		
+		SEU NOVO BROTHER CHAMADO NG
+
+			ng help  - ver todos os comandos
+			
+			ng add <collection>  - para importar bibliotecas externas ao projeto
+			
+			ng new [name] - Cria um novo projeto Angula 
+			
+			ng run <target>  - vc executa um builder de uma arquitetura
+			
+			ng test [project] - Rodar os testes unitários
+						
+			ng server [project] - Ele builda a aplicação e cria um servidor
+			
+			ng doc <keyword> - vai pegar a palavra chave e abrir a documentação com a palavra chave
+			
+			ng generate - gera um schema de arquivos , Exemplo ng generate components
+			
+		
+		NG NEW: CRIANDO UM PROJETO Angular
+		
+			
+			
+			
+			
+			
+			
+			
+				
+
+					
+
+				
+					
+					
+					
+					
+		
+		

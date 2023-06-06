@@ -11,7 +11,7 @@
 			
 			É o átomo da sua aplicação
 			
-			Gerealmente é uma função JS/TS que retorna HTML, CSS  e carrega eventos Javascript
+			Geralmente é uma função JS/TS que retorna HTML, CSS  e carrega eventos Javascript
 			
 		Como minha aplicação é montada ?
 
@@ -172,6 +172,304 @@
 			
 		
 		INTERPOLAÇÃO DE DADOS	
+		
+			Dentro da Classe export vamos definir as propriedades:
+			
+			export class Button {
+				buttonText: string = 'ACESSAR';
+				buttonNumber: number = 1;
+				buttonTexts: string[] = ['VENDER', 'COMPRAR'];
+				buttonObject = {
+					label: 'adicionar ao carrinho',
+				};	
+			}
+			
+			Agora vamos chamer no html (button.components.html):---posso passar varios types dentro da tag button
+			
+				<div>
+					<button>{{buttonText}}</button>  
+				</div>
+				
+				<div>
+					<button>{{buttonTexts[1]}}</button>  ---selecionando a posição 1 no array  
+				</div>
+				
+				<div>
+					<button>{{buttonNumber}}</button>  ----do tipo number
+				</div>
+				
+				<div>
+					<button>{{buttonObject.label}}</button>  
+				</div>
+		
+		ESTILO GLOBAL VS SCOPED		
+		
+			Todo componente tem sua folha de estilo e temos o styles.css que é global, tudo que vc fizer nesse styles vai refletir no projeto inteiro.
+			
+			Diferente do que scoped ex: button.component.css que somente funciona com o componente especifico , no caso do exemplo o button.component.ts, lembrando que o componente sempre vai dar preferência pelo o scoped dele, e na ausência do scoped o component vai puxar do global.
+			
+		MÚLTIPLOS ESTILOS NO COMPONENTE
+
+			No style.css (global) colocamos :
+			
+				button {
+				padding: 10px;
+				border-radius: 10px
+				}
+				
+				e no scoped button.component.css:
+				
+				.button{
+					backgroung-color: aqua;
+				}
+
+			O resultado é que ele vai mesclar os estilos pois o atributo padding e  border-radius foi definido somente no global.
+			
+		
+		FAZENDO SEUS COMPONENTES CONVERSAREM	
+			
+				app.component.html ----pai
+
+				<my-button></my-button> ---filho do componente acima, pois esta dentro do app.component
+			
+			Vamos compartilhar uma coisa do pai para o filho, dentro do app.component.ts dentro de export vamos criar uma propriedade :
+			
+				export class AppComponent {
+					name = 'Angular ' + VERSION.major;
+					buttonLabel: string = "CARRINHO";
+					buttonSecond: string = 'ADICIONAR A FAVORITOS';
+				}
+				
+			Agora vamos passar a propriedade dentro do app.component.html:
+
+				<my-button [label]="buttonLabel"></my-button>
+				<my-button [label]="buttonSecond"></my-button>
+				
+			Agora para passar para dentro do button.component.ts, ele vai receber uma propriedade label dentro de export :
+			
+				export class Button {
+					label:string = '';	
+				}
+
+			E no import vamos passar o Input:
+
+				import { Component, Input} from '@angular/core';
+			
+				export class Button {
+					@Input() label:string = '';	 ---iputasmos a propriedade pai no filho
+				}
+			
+
+			Agora no button.component.html:
+			
+				<div>
+					<button>{{ label }}</button>
+				</div>
+				
+			Dai ele vai puxar do component pai 	fazendo so componentes se conversarem
+			
+			
+		INPUTANDO VALORES NO SEU COMPONENTE
+		
+			<my-button label="{{ buttonLabel }}"></my-button>  --esperando uma variavel
+			<my-button [label]="buttonSecond"></my-button>
+			
+			ou podemos declarar um valor :
+			
+			<my-button label="noticia"></my-button> ---sem {{}} ele esta esperando um texto
+			
+
+		AS 4 MANEIRAS POSSÍVEIS DE SE PASSAR VALORES PARA COMPONENTES
+		
+			<my-button label="{{ buttonLabel }}"></my-button>  --esperando uma variavel
+			<my-button [label]="buttonSecond"></my-button>
+			
+			
+			<my-button label="noticia"></my-button> ---sem {{}} ele esta esperando um texto
+			<my-button [label]="'CARRINHO'"></my-button>
+		
+	---------------------------------------------------------------------------------------------
+	BINDING SYNTAX
+
+		DATA BINDING ---vide Documentação
+		
+			É a comunicação entre a parte lógica do TypeScript com parte visual do elemento chamamos 
+			de Data binding, a recomendação é usar com colchetes[]
+			
+				<my-button [label]="buttonSecond"></my-button>
+				<my-button [label]="'CARRINHO'"></my-button>
+				
+		
+		TIPOS DE BINDING
+
+			{{ VALOR}} --- Interpolação
+			
+			[propriedade] = "valor" --- Property binding
+			
+			(evento) = "Handler" ---Event binding
+			
+			[(ngModel)] = "propriedade" ---Two way data binding
+			
+		
+		EVENT BINDING
+			
+			<!-- data binding = associação de dados -->
+			
+			<!-- interpolação -->
+			<my-button label="noticia></button>
+			<my-button label="{{ buttonLabel }}"></my-button>
+		
+			<!-- property binding -->
+			<my-button [label]="buttonSecond"></my-button>
+			<my-button [label]="'CARRINHO'"></my-button>
+			
+			
+		 vimos a interpolação e o property binding , agora vamos ver o event binding
+
+			Dentro de button.component.ts abaixo do export , vamos criar uma função:
+			
+				getAlert(){
+					alert("ola");
+				}
+
+			ou se quiser deixar mais dinamico
+			
+				getAlert(){
+					alert(this.label);
+				}
+			
+			Agora dentro do button.component.html:
+			
+			
+				<div>
+					<button (click)="getAlert()">{{ label }}</button>
+				</div>
+			
+			PS:***os eventos são padrões do html **** consulte a documentação na mozilla em events***
+			
+			
+			
+		PARÂMETROS NO EVENT BINDING
+
+			Poderia também passar um parâmetro para event binding :
+			
+				getAlert(num: number){
+					alert(num);
+				}			
+				
+				
+				<div>
+					<button (click)="getAlert(14)">{{ label }}</button>
+				</div>
+			O event binding comunica do html para o typeScript
+			
+
+		TWO WAY DATA BINDING
+
+			Ambos se comunicam um com o outro html comunica com typescript e typeScript comunica com html
+			
+			Vamos criar um componente clicando com o botão direito do mouse em cima da pasta component e selecionando  Angular Generator > Component e nomea-lo de entry-data, dai ele criará os três   components  html, css e ts dentro de uma pasta nomeda de entry-data.			
+			
+			
+			Vamos declarar no app.module.ts o import:
+			
+			import { EntryDataComponent } from './components/entry-data.component';
+			
+			e colocar a classe EntryDataComponent no declarations.
+			
+			Apos isso vamos testar colocanco selector do componente  dentro do app.components.html:
+			
+			<!--Two way data binding-->
+			<app-entry-data></app-entry-data>
+			
+			Ok,vamos trabalhar com entry-data:
+			
+			No ts do entry-data, no export:
+			
+			export class EntryDataComponent {
+				placeholder:string = "email"
+			}
+			
+			Dentro do componente html do entry-data :
+			
+			vamos associar a propriedade da classe no componente:
+
+			<input 					---property binding
+				type="text" 
+				[value]="placeholder"
+				(input)="placeholder = $any($event.target).value" ---evento disparando uma ação para a parte logica
+				/>  
+			<p>{{ placeholder }}</p>  ---interpolação
+			
+		
+		USANDO A DIRETIVA NGMODEL
+
+				export class EntryDataComponent {
+					placeholder:string = "email"
+					placepass:string = "senha"
+				}
+				
+			vamos fazer a união dos colchetes com os parentes para usar o ngmodel:
+			
+				<input
+					type="text"
+					[(ngModel)]="placepass"
+				/>
+				
+				<p>{{ placepass }} </p>	
+				
+		ANGULAR FORMS
+		
+			No app.module tem a importação especifica para trabalhar com forms:
+			
+			import { NgModule } from '@angular/core';
+			import { FormsModule } from '@angular/core';
+			
+		STYLE BINDING
+
+			biding de css  no entry-data.component.html:
+			
+				<input type="text" [(ngModel)]="placepass"/>
+				<p [style.color]="color">{{ placepass }}</p>
+				
+			e dentro do do entry-data.component.ts:
+			
+					export class EntryDataComponent {
+						placeholder:string = "email"
+						placepass:string = "senha"
+						color:string="red"				
+					}
+
+		---------------------------------------------------------------------------------------------------
+
+			****Download do projeto*****
+			
+				
+					
+				
+			
+			
+			
+			
+			
+			
+			
+			
+				
+			
+			
+			
+		
+			
+
+			
+			
+			
+			
+			
+			
+			
+		
 			
 			
 			
